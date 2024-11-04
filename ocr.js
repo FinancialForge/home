@@ -22,7 +22,7 @@ const url = 'https://api.ocr.space/parse/image’;
 
 const data = {
 
-  apikey: ‘’
+  apikey: ‘K84105813588957’
 
   base64Image: toBase64(image)
 
