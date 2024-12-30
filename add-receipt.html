@@ -1,12 +1,37 @@
-<script src="ocr.js"/>
-<script src="parse.js"/>
-<script src="add-receipt.js"/>
-<div>
-  <input type="file" id="img"/> <br><br>
-  <input type="month" id="mot"/> <br><br>
-  <select id="cat">
-    <option value="co">Category_One</option>
-    <option value="ct">Category_One</option>
-  </select> <br><br>
-  <input type="submit" id="go"/>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input type="file" id="img"/> <br><br>
+        <input type="month" id="mot"/> <br><br>
+        <select id="cat">
+          <option value="co">Category_One</option>
+          <option value="ct">Category_One</option>
+        </select> <br><br>
+        <input type="submit" id="go"/>
+      </div>
+      <script type="module">
+      import{Client,fql}from'https://cdn.jsdelivr.net/npm/fauna@latest/dist/browser/index.js';
+      window.Client = Client;
+      window.fql = fql;
+      console.log(fql ? 'MODULE LOADED' : 'FAILED TO LOAD MODULE')
+      </script>
+      <script src="./ocr.js"></script>
+      <script src="./parse.js"></script>
+      <script src="./fauna.js"></script>
+      <script src="./faunascripts.js"></script>
+      <script>
+      document.getElementById('go').addEventListener('click', _e=>{
+          console.log('(sending now...)')
+          OCR(document.getElementById('img')).then(r => console.log('(received, parsing now...)', '(parsed, printing...)', getTotal(r), '(printed)'))
+          console.log('(sent, waiting for response...)')
+      })
+      console.info("LOADED SCRIPT TAG")
+      </script>
+</body>
+</html>
