@@ -18,11 +18,10 @@ let catOBJ = document.getElementById('cat')
 
 document.getElementById('go').addEventListener(e => {
     e.preventDefault()
-    let total = 0
-    await OCR(imaOBJ).then(txt => extractTotal(txt)).then(ttl => total = ttl)
+    OCR(imaOBJ).then(txt => extractTotal(txt)).then(total => {
+        let month = motOBJ.value
+        let category = catOBJ.value
 
-    let month = motOBJ.value
-    let category = catOBJ.value
-
-    console.log({total, month, category})
+        console.log({total, month, category})
+    })
 });
