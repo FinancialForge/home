@@ -211,7 +211,7 @@ header .title {
         width: 95%; 
     }
 
-    .forum input[type="submit"] {
+    #go {
         width: 100%; 
     }
 }
