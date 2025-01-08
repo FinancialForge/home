@@ -16,7 +16,8 @@ let imgOBJ = document.getElementById('img')
 let motOBJ = document.getElementById('mot')
 let catOBJ = document.getElementById('cat')
 
-async function addReceipt() {
+document.getElementById('go').addEventListener(e => {
+    e.preventDefault()
     let total = 0
     await OCR(imaOBJ).then(txt => extractTotal(txt)).then(ttl => total = ttl)
 
@@ -24,4 +25,4 @@ async function addReceipt() {
     let category = catOBJ.value
 
     console.log({total, month, category})
-}
+});
