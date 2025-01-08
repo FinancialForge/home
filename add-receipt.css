@@ -125,7 +125,7 @@ header .title {
 .forum input[type="file"],
 .forum input[type="month"],
 .forum select,
-.forum input[type="submit"] {
+#go {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -135,13 +135,13 @@ header .title {
     background-color: #3E3A34;
 }
 
-.forum input[type="submit"] {
+#go {
     background-color: #FF9B07;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.forum input[type="submit"]:hover {
+#go {
     background-color: #e68a00;
 }
 
