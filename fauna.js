@@ -1,7 +1,7 @@
 async function RunQ(query) {
     try {
         const client = new Client({
-            secret: 'fnAFz4ze8XAAQqRW5pLAUJqhjw1U_NxoysCiW6_V',
+            secret: 'fnAF0w-0NuAAQPXMNPu-3rs8x3algIxlPaNRx3F2',
         });
         const result = await client.query(query);
         return JSON.stringify(result, null, 2);
@@ -11,38 +11,34 @@ async function RunQ(query) {
 }
 
 async function CreateUser(email, pass) {
-  const query = fql`
-    users.create({ data: { email: ${email}, pass: ${pass} } })
-  `;
+  const query = fql`users.create({email:'${email}',pass:'${pass}'})`;
   return await RunQ(query);
 }
 
 async function GetUser(email) {
   const query = fql`
-    users.getByEmail(${email}).first()
+    users.getByEmail('${email}').first()?
   `;
-  return await RunQ(query);
+  return await RunQ(query).then(x => x.data);
 }
 
 async function UpdateUser(email, updates) {
   const query = fql`
-    users.getByEmail(${email}).first()?.update({ data: ${updates} })
+    users.getByEmail('${email}').first()?.update({ data: ${updates} })
   `;
   return await RunQ(query);
 }
 
 async function ExistsUser(email) {
   const query = fql`
-    users.getByEmail(${email}).exists()
+    users.getByEmail('${email}').exists()
   `;
   return await RunQ(query);
 }
 
 async function DeleteUser(email) {
   const query = fql`
-    users.getByEmail(${email}).first()?.delete()
+    users.getByEmail('${email}').first()?.delete()
   `;
   return await RunQ(query);
 }
-
-console.log('LOADED FAUNA.JS FILE')

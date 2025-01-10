@@ -11,12 +11,19 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('.file-name').textContent = fileName;
     });
     
-    document.getElementById('go').addEventListener(e => {
+    document.getElementById('go').addEventListener('click', e => {
         e.preventDefault()
         let imgOBJ = document.getElementById('img')
         let motOBJ = document.getElementById('mot')
         let catOBJ = document.getElementById('cat')
-        OCR(imaOBJ).then(txt => extractTotal(txt)).then(total => {
+        OCR(imgOBJ).then(txt => extractTotal(txt)).then(total => {
+            if (total == null) {
+                document.getElementById('go').textContent = 'Sorry, Could not get total from this receipt...'
+                setTimeout(() => {
+                    document.getElementById('go').outerHTML = '<button id="go"><a href="./manual-total.html">Press Here To Manually Enter The Total</a></button>'
+                }, 750);
+                return;
+            }
             let month = motOBJ.value
             let category = catOBJ.value
     
