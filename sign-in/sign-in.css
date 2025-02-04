@@ -120,7 +120,6 @@ button {
     color: #FF9B07;
 }
 
-
 .forum {
     background-color: #000000;
     margin-top: 60px; 
@@ -138,10 +137,10 @@ button {
     text-align: center; 
 }
 
-.forum input[type="number"],
-.forum input[type="month"],
+.forum input[type="email"],
+.forum input[type="password"],
 .forum select,
-#go {
+.go {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -151,13 +150,13 @@ button {
     background-color: #3E3A34;
 }
 
-#go {
+.go {
     background-color: #FF9B07;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-#go {
+.go {
     background-color: #e68a00;
 }
 
@@ -191,8 +190,13 @@ button {
         width: 95%; 
     }
 
-    #go {
+    .go {
         width: 100%; 
+    }
+
+    .footer-links {
+        position: absolute;
+        bottom: 5px;
     }
 
     #menu_icon {
