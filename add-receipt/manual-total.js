@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // send-in receipt
     DB.u.get(email).then(user => {
-      if (user['totals'] == undefined || user.totals[category] == undefined) {
+      if (user['totals'] == undefined || user.totals[category] == undefined || user.totals[category][month] == undefined) {
         DB.u.update(email, {
           'totals': {
             [category]: {
